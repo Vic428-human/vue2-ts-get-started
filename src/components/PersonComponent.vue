@@ -1,13 +1,13 @@
 <template>
   <div class="form">
     <div class="input-field">
-        <label for="firstName" class="label font-weight-bold m-b-5">First Name</label>
-        <input type="text" id="firstName" class="input input-border" placeholder="First Name" oninput="updateFullName()">
+        <label for="firstName" class="label font-weight-bold m-b-5">First Name: </label>
+        <input v-model="firstName" type="text" id="firstName" class="input input-border" placeholder="First Name">
     </div>
 
     <div class="input-field">
-        <label for="fullName" class="label font-weight-bold m-b-5">Full Name</label>
-        <span id="fullName"></span>
+        <label for="fullName" class="label font-weight-bold m-b-5">Full Name: </label>
+        <label >{{ fullName }}</label>
     </div>
 
     <button onclick="speak()">SPEAK</button>
@@ -16,11 +16,41 @@
 
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+export default {
+  props: {
+    whatToSay: {
+        type: String,
+        default: "Default saying"
+    }
+},
+  data() {
+      return {
+          initialLastName: "Smith",
+          counter: 1,
+          firstName: "Bob",
+          lastName: "Smith"
+      };
+  },
+  computed: {
+      fullName() {
+          return `${this.firstName} ${this.lastName}`;
+      }
+  },
+  methods: {
+      speak() {
+          alert("This is " + this.fullName + " speaking. " + this.whatToSay);
+      }
+  },
+  watch: {
+      firstName: {
+          handler() {
+              // handler code here
+              this.lastName = this.initialLastName + this.counter ++;
+              console.log('first name changed')
+          }
+      }
+  }
 
-@Component
-export default class PersonComponent extends Vue {
-  @Prop() private msg!: string;
 }
 </script>
 
