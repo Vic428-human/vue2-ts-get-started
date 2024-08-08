@@ -1,6 +1,6 @@
 # vue2-ts-02
 
-## 分支功能列表
+## 分支功能列表!
 
 ```
 - [非class component的vue的寫法+class component的寫法註解](https://github.com/Vic428-human/vue2-ts-get-started/commit/6312664bd1566e42ce5094bfd84cab86002debc4)
