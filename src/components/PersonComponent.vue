@@ -16,13 +16,35 @@
 
 
 <script lang="ts">
+/*
+  vue-class-component 作法
+  https://github.com/kaorun343/vue-property-decorator
+
+  export default class YourComponent extends Vue {
+    @Prop(Number) readonly propA: number | undefined
+    @Prop({ default: 'default value' }) readonly propB!: string
+    @Prop([String, Boolean]) readonly propC: string | boolean | undefined
+  }
+
+  props: {
+    propA: {
+      type: Number,
+    },
+    propB: {
+      default: 'default value',
+    },
+    propC: {
+      type: [String, Boolean],
+    },
+  },
+*/
 export default {
   props: {
     whatToSay: {
         type: String,
         default: "Default saying"
     }
-},
+  },
   data() {
       return {
           initialLastName: "Smith",
