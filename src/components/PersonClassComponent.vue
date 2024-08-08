@@ -1,31 +1,64 @@
 <template>
-  <div class="hello">
-    123
+  <div class="form">
+    <div class="input-field">
+        <label for="firstName" class="label font-weight-bold m-b-5">First Name: </label>
+        <input v-model="firstName" type="text" id="firstName" class="input input-border" placeholder="First Name">
+    </div>
+
+    <div class="input-field">
+        <label for="fullName" class="label font-weight-bold m-b-5">Full Name: </label>
+        <label >{{ fullName }}</label>
+    </div>
+    <button v-on:click="speak()">SPEAK</button>
   </div>
 </template>
-
 <script lang="tsx">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
 
 @Component
-export default class DataTable extends Vue {
+export default class PersonClassComponent extends Vue {
+  // @Prop() whatToSay: string;
+  // @Prop({ default: 'Default saying' }) readonly whatToSay!: string
+  @Prop() whatToSay: string | undefined;
 
-  private renderdDashboardSheet() {
-      return (
-        <div class="dashboard-sheet">
-          <div class="title">實驗</div>
-        </div>
-       
-      )
-  }
+  // 初始化
+  initialLastName="Smith";
+  counter=1;
+  firstName="Bob";
+  lastName=this.initialLastName;
 
-  render() {
-    return (
-      <div>{this.renderdDashboardSheet()}</div>
-    );
+  // standard component 
+  // watch: {
+  //     firstName: {
+  //         handler() {
+  //             // handler code here
+  //             this.lastName = this.initialLastName + this.counter ++;
+  //             console.log('first name changed')
+  //         }
+  //     }
+  // }
+  @Watch('firstName') // watch 的是 <input v-model="firstName" 裡面輸入的值
+  public onFirstNameChanged() {
+    this.lastName = this.initialLastName + this.counter++;
+    console.log('onFirstNameChanged===>',this.lastName)
   }
 }
 </script>
+<!-- 
+private renderdDashboardSheet() {
+  return (
+    <div class="dashboard-sheet">
+      <div class="title">實驗</div>
+    </div>
+   
+  )
+}
+
+render() {
+return (
+  <div>{this.renderdDashboardSheet()}</div>
+);
+} -->
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
