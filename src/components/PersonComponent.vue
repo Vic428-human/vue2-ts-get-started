@@ -9,8 +9,7 @@
         <label for="fullName" class="label font-weight-bold m-b-5">Full Name: </label>
         <label >{{ fullName }}</label>
     </div>
-
-    <button onclick="speak()">SPEAK</button>
+    <button v-on:click="speak()">SPEAK</button>
   </div>
 </template>
 

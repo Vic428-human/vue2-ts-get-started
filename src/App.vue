@@ -1,18 +1,21 @@
 <template>
   <div id="app">
+    <label class="h2">Standard Component</label>
+    <PersonComponent :whatToSay="`我是 Standard Component`"></PersonComponent>
     <img alt="Vue logo" src="./assets/logo.png">
-    <PersonComponent :whatToSay="`準備開始模擬table filter 的功能`"></PersonComponent>
-    <!-- <DataTable msg="準備開始模擬table filter 的功能"/> -->
+    <label class="h2">Class Component</label>
+    <PersonClassComponent :whatToSay="`我是 Class Component`"></PersonClassComponent>
   </div>
 </template>
 
 <script lang="ts">
-// import DataTable from "./components/DataTable.vue";
 import PersonComponent from "./components/PersonComponent.vue";
+import PersonClassComponent from "./components/PersonClassComponent.vue";
 
 export default {
   components: {
-    PersonComponent
+    PersonComponent,
+    PersonClassComponent,
   }
 }
 </script>
